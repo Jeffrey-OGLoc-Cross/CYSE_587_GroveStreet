@@ -6,7 +6,7 @@ from drone import Drone
 from route import RouteGenerator
 from gcs import GCS
 from adsbchannel import ADSBChannel
-from jammer import Jammer
+from jammer import PulsedNoiseJammer
 from spoofer import Spoofer
 
 # Define central location (e.g., Washington, D.C.)
@@ -39,7 +39,7 @@ drones = [
 
 # Initialize the communication channel, jammer, and spoofer
 channel = ADSBChannel()
-jammer = Jammer(jamming_probability=0.4, noise_intensity=0.8)  # Adjust probability as needed
+jammer = PulsedNoiseJammer(jamming_probability=0.4, noise_intensity=0.8, pulse_duration=3, pulse_interval=7)  # Adjust probability as needed
 spoofer = Spoofer(spoof_probability=0.3, fake_drone_id="FAKE-DRONE")
 
 # Create a figure for 3D plotting
